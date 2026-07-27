@@ -20,7 +20,7 @@ glance.
 
 ```bash
 cd ~/MagicMirror/modules
-git clone https://github.com/<your-user>/MMM-SchoolWeek
+git clone https://github.com/ago1776/MMM-SchoolWeek
 ```
 
 Add to `config/config.js` (times are `"HHMM"`, `dayNumber` is 1 = Monday … 5 = Friday):
@@ -64,3 +64,4 @@ common subjects (math, languages, science, music, art, sport). Override any subj
 ## License
 
 MIT © Andreas Göpfert
+
