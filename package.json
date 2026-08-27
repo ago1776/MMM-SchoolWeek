@@ -4,7 +4,7 @@
   "description": "MagicMirror² module: weekly school timetable — active day in full (colour blocks, times, breaks as gaps), other days compact.",
   "main": "MMM-SchoolWeek.js",
   "keywords": ["MagicMirror", "MMM-SchoolWeek", "timetable", "school", "schedule"],
-  "author": "Andreas Göpfert",
+  "author": "Andreas Göpfert <andi.goepfert@gmx.de> (https://github.com/ago1776)",
   "license": "MIT",
   "repository": { "type": "git", "url": "git+https://github.com/ago1776/MMM-SchoolWeek.git" },
   "homepage": "https://github.com/ago1776/MMM-SchoolWeek#readme",
