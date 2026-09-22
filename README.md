@@ -3,7 +3,7 @@
 A [MagicMirror²](https://magicmirror.builders/) module that shows a **weekly school
 timetable**. The **active day** is rendered in full — colour blocks with a subject icon,
 name and time, and breaks shown as real gaps on a proportional time axis. The **other
-days** are compact grey columns with subject abbreviations, so the whole week fits at a
+days** are compact and dimmed on the same shared time axis (double lessons stay proportional), so the whole week fits at a
 glance.
 
 ![MMM-SchoolWeek screenshot](screenshot.png)
@@ -11,7 +11,7 @@ glance.
 ## Features
 
 - Active day full-size, time-proportional (breaks = real gaps), current lesson highlighted
-- Other weekdays compact side-by-side
+- Other weekdays compact and dimmed on the same shared time axis (double lessons stay proportional)
 - Built-in colour/icon map for common subjects, fully overridable per subject
 - Optionally trim recurring "before/after school care" lessons at the day edges
 - Self-contained styling; nothing hardcoded

@@ -1,7 +1,9 @@
 /* MagicMirror² Module: MMM-SchoolWeek
- * A weekly school timetable: five days side by side on a shared time axis.
- * The active day is shown in full (colour blocks with icon, subject and time, breaks as
- * real gaps); the other days are compact grey columns with subject abbreviations.
+ * A weekly school timetable: five days side by side on a shared weekly time axis.
+ * Every day is time-proportional — breaks appear as real gaps and a double lesson is
+ * drawn twice as tall as a single one. The active day is shown in full (colour blocks
+ * with icon, subject and time, current lesson highlighted); the other days are compact
+ * and dimmed with the same time geometry, showing subject abbreviations.
  *
  * By Andreas Göpfert — MIT Licensed.
  */
@@ -90,9 +92,10 @@ Module.register("MMM-SchoolWeek", {
 
 		const perDay = {};
 		for (let d = 1; d <= 5; d++) perDay[d] = this.lessonsForDay(sched, d);
-		// Scale the time axis to the active day only, so it fills the height cleanly.
+		// Shared weekly time axis across all days, so columns line up and lesson heights
+		// are comparable (a double lesson is drawn twice as tall as a single one).
 		let tMin = Infinity, tMax = -Infinity;
-		const scaleDays = (todayNum && perDay[todayNum] && perDay[todayNum].length) ? [todayNum] : [1, 2, 3, 4, 5];
+		const scaleDays = [1, 2, 3, 4, 5];
 		for (const d of scaleDays) perDay[d].forEach((L) => { tMin = Math.min(tMin, L.start); tMax = Math.max(tMax, L.end); });
 		if (!isFinite(tMin)) { return wrap; }
 		const span = Math.max(1, tMax - tMin);
@@ -123,11 +126,14 @@ Module.register("MMM-SchoolWeek", {
 				});
 				inner += `<div class="sw-lane" style="height:${H}px">${lane.join("")}</div>`;
 			} else {
-				const cells = perDay[d].map((L) => {
+				// Other days: same time geometry as the active day, dimmed, abbreviation only.
+				const lane = [];
+				perDay[d].forEach((L) => {
 					const m = this.subjectMeta(L.subject);
-					return `<div class="sw-ab"><i style="background:${m.color}"></i><span>${m.abbr}</span></div>`;
-				}).join("");
-				inner += `<div class="sw-lane sw-evenly" style="height:${H}px">${cells}</div>`;
+					const top = y(L.start), h = Math.max(14, y(L.end) - y(L.start) - 3);
+					lane.push(`<div class="sw-pblk" style="top:${top.toFixed(1)}px;height:${h.toFixed(1)}px"><i style="background:${m.color}"></i><span>${m.abbr}</span></div>`);
+				});
+				inner += `<div class="sw-lane" style="height:${H}px">${lane.join("")}</div>`;
 			}
 			col.innerHTML = inner;
 			grid.appendChild(col);
