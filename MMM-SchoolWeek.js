@@ -3,7 +3,8 @@
  * Every day is time-proportional — breaks appear as real gaps and a double lesson is
  * drawn twice as tall as a single one. The active day is shown in full (colour blocks
  * with icon, subject and time, current lesson highlighted); the other days are compact
- * and dimmed with the same time geometry, showing subject abbreviations.
+ * solid tiles carrying a subject-colour rail whose length reads as the lesson
+ * duration, so long lessons and free periods stay clearly distinct.
  *
  * By Andreas Göpfert — MIT Licensed.
  */
@@ -131,7 +132,7 @@ Module.register("MMM-SchoolWeek", {
 				perDay[d].forEach((L) => {
 					const m = this.subjectMeta(L.subject);
 					const top = y(L.start), h = Math.max(14, y(L.end) - y(L.start) - 3);
-					lane.push(`<div class="sw-pblk" style="top:${top.toFixed(1)}px;height:${h.toFixed(1)}px"><i style="background:${m.color}"></i><span>${m.abbr}</span></div>`);
+					lane.push(`<div class="sw-pblk" style="top:${top.toFixed(1)}px;height:${h.toFixed(1)}px;border-left:4px solid ${m.color}"><span>${m.abbr}</span></div>`);
 				});
 				inner += `<div class="sw-lane" style="height:${H}px">${lane.join("")}</div>`;
 			}

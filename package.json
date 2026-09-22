@@ -1,7 +1,7 @@
 {
   "name": "mmm-schoolweek",
-  "version": "1.1.0",
-  "description": "MagicMirror² module: weekly school timetable on a shared weekly time axis — every day time-proportional (double lessons stay tall), active day in full, other days compact.",
+  "version": "1.2.0",
+  "description": "MagicMirror² module: weekly school timetable on a shared weekly time axis — every day time-proportional, active day in full; other days as compact solid tiles with a subject-colour duration rail (long lessons vs free periods read at a glance).",
   "main": "MMM-SchoolWeek.js",
   "keywords": ["MagicMirror", "MMM-SchoolWeek", "timetable", "school", "schedule"],
   "author": "Andreas Göpfert <andi.goepfert@gmx.de> (https://github.com/ago1776)",
